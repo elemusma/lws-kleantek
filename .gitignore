@@ -1,0 +1,62 @@
+**/assets
+# Node dependencies (if applicable)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# PHPStorm/IDE config files
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# SASS/SCSS cache
+.sass-cache/
+
+# Composer vendor directory
+/vendor/
+
+# WordPress core files (if not versioning the whole WP install)
+wp-admin/
+wp-includes/
+*.php
+*.txt
+index.php
+license.txt
+readme.html
+wp-*.php
+
+# WordPress config and sensitive files
+wp-config.php
+.htaccess
+web.config
+
+# Environment files
+.env
+.env.*
+
+# Log files
+*.log
+
+# Backup files
+*.sql
+*.zip
+*.tar.gz
+*.bak
+*.orig
+
+# Uploads cache or unnecessary large media (optional, use with care)
+wp-content/uploads/
+
+# Caches
+wp-content/cache/
+wp-content/backups/
+wp-content/upgrade/
+wp-content/ai1wm-backups/
+
+# Local dev tools
+.vscode/

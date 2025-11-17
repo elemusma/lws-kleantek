@@ -1,0 +1,31 @@
+.number-step {
+    font-size: 30px;
+    color: var(--accent-primary);
+    border: 1px solid var(--accent-primary);
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+    border-radius: 50%;
+    font-family: 'dreamboat', sans-serif;
+}
+.steps h3 {
+    font-size:1.5rem;
+}
+
+.steps p {
+    padding-left: 25px;
+    position: relative;
+}
+
+.steps p:before {
+    content: "";
+    background: var(--accent-primary);
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 6px;
+    left: 0;
+}

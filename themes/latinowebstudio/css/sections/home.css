@@ -1,0 +1,12 @@
+.col-lg-6.col-image-about:before {
+    content: "";
+    background: var(--accent-primary);
+    position: absolute;
+    height: 100%;
+    width: 52%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}

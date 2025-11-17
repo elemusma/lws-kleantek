@@ -1,0 +1,254 @@
+/* .source-Google > .ti-row > .ti-profile-details > .ti-name, 
+.source-Google > .ti-row > .ti-profile-details > .ti-rating-text span strong,
+.source-Google > .ti-row > .ti-profile-details > .ti-header-write-btn-container a{
+    color: white !important;
+} */
+
+.single-post p {
+    line-height: 2;
+}
+
+.small {
+  font-size:80%;
+}
+.text-white *,
+.text-white {
+  color: white;
+}
+
+.text-white a:hover {
+  color: white;
+}
+
+.text-accent,
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+
+.text-accent-secondary {
+  color: var(--accent-secondary);
+}
+
+.text-accent-tertiary {
+  color: var(--accent-tertiary);
+}
+
+.text-gray {
+  color: #585556;
+}
+
+.text-shadow {
+  text-shadow: var(--text-shadow);
+}
+
+.text-black {
+  color: black;
+}
+
+a.text-black:hover {
+  color: black;
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
+.ls-1 {
+  letter-spacing: 1em;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.wp-block-quote {
+  border-left: 2px solid;
+  margin: 0 0 1.75em;
+  padding-left: 1em;
+  font-style: italic;
+  font-size: 18px;
+}
+
+html,
+body {
+  font-family: 'poppinsregular';
+	line-height:1.75;
+}
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
+  font-family: 'poppinsregular';
+  line-height: 1.25;
+  /* margin:0; */
+}
+
+h1, .h1 {
+  font-size: 3rem;
+  margin:0px;
+}
+h2, .h2 {
+  font-size: 2.5rem;
+  margin:0px;
+}
+h3, .h3 {
+  font-size: 1.75rem;
+}
+.lead,h4, .h4 {
+  font-size: 1.15rem;
+}
+h5,.h5{
+  font-size:1.05rem;
+}
+h6,.h6{
+  font-size:1rem;
+}
+
+.page-template-areas-of-expertise h1,
+.single h1 {
+	font-size: 2.25rem;
+}
+
+.page-template-areas-of-expertise h2,
+.single h2 {
+	font-size: 2rem;
+}
+
+.page-template-areas-of-expertise h3,
+.single h3 {
+	font-size: 1.75rem;
+}
+
+/* .single h1 {
+    font-size: 2rem;
+} */
+
+.dreamboat {
+  font-family: 'dreamboat', sans-serif;
+  font-weight:800;
+}
+
+.light {
+  font-family: 'poppinslight';
+}
+
+.extra-light {
+  font-family: 'poppinsextralight';
+}
+
+.medium {
+  font-family: 'poppinsmedium';
+}
+
+.semi-bold{
+  font-family: 'poppinssemibold';
+}
+
+.bold,
+strong,b {
+  font-family: 'poppinsbold';
+}
+
+ul.arrows {
+  padding-left: 20px;
+}
+
+.arrows li {
+  position: relative;
+  list-style: none;
+  /* color: #a4a3a3;
+  text-shadow:var(--text-shadow);
+  font-style: italic;
+  font-family: 'poppinsbold'; */
+}
+
+.arrows li:before {
+  content: "";
+  background: url('/wp-content/uploads/2024/04/Checkmark.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 8px;
+  left: -20px;
+}
+
+@media only screen and (max-width:991px) {
+  .text-right .arrows li {
+    padding-right: 30px;
+}
+
+.text-right .arrows li::before {
+    right: 0;
+    left: unset;
+}
+}
+
+blockquote {
+  font-size: 90%;
+}
+
+/* .cormorant-garamond {
+  font-family: cormorant-garamond, serif;
+}
+
+.cormorant-garamond.bold {
+  font-family: cormorant-garamond, serif;
+} */
+
+@media only screen and (max-width:767px) {
+  h1, .h1 {
+    font-size: 1.75rem;
+  }
+  h2, .h2 {
+    font-size: 1.5rem;
+  }
+  h3, .h3 {
+    font-size: 1.25rem;
+  }
+  h4, .h4 {
+    font-size: 1.20rem;
+  }
+  h5,.h5{
+    font-size:1.15rem;
+  }
+  .lead,h6,.h6{
+    font-size:1.1rem;
+  }
+}
+
+@media only screen and (min-width:992px){
+  .column-count-two {
+    column-count:2;
+    column-gap: 100px;
+  }
+}
+
+.handel,
+h1,
+.h1 {
+  font-family: handel-gothic, sans-serif;
+}
+.chennai {
+  font-family: chennai, sans-serif;
+  font-weight: 400;
+}
+
+/* 
+font-family: cormorant-garamond, serif; 
+font-weight:300;
+font-weight:400;
+font-weight:500;
+font-weight:600;
+font-weight:700;
+*/
+
+
+/* Fonts Added:
+Dreamboat Regular
+font-family: "dreamboat", sans-serif;
+font-weight: 400;
+font-style: normal;
+Dreamboat Bold
+font-family: "dreamboat", sans-serif;
+font-weight: 700;
+font-style: normal; */

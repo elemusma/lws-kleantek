@@ -1,0 +1,19 @@
+{
+    "name": "acf/instagram-feed",
+    "title": "Instagram Feed",
+    "description": "A custom instagram-feed block.",
+    "style": [
+        "file:./instagram-feed.css"
+    ],
+    "category": "formatting",
+    "icon": "admin-customizer",
+    "keywords": [
+        "instagram-feed",
+        "company"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "instagram-feed.php"
+    },
+    "align": "full"
+}

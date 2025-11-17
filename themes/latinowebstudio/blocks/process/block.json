@@ -1,0 +1,19 @@
+{
+    "name": "acf/process",
+    "title": "Process",
+    "description": "A custom process block.",
+    "style": [
+        "file:./process.css"
+    ],
+    "category": "formatting",
+    "icon": "admin-customizer",
+    "keywords": [
+        "process",
+        "company"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "process.php"
+    },
+    "align": "full"
+}

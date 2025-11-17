@@ -1,0 +1,19 @@
+{
+    "name": "acf/honeycomb-part-two",
+    "title": "Honeycomb Part Two",
+    "description": "A custom honeycomb-part-two block.",
+    "style": [
+        "file:./honeycomb-part-two.css"
+    ],
+    "category": "formatting",
+    "icon": "admin-customizer",
+    "keywords": [
+        "honeycomb-part-two",
+        "quote"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "honeycomb-part-two.php"
+    },
+    "align": "full"
+}

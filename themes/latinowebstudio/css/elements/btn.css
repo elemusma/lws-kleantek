@@ -1,0 +1,90 @@
+.btn-main,
+.btn-main a,
+.wp-block-file__button {
+    background: var(--accent-primary);
+    padding: 10px 15px !important;
+    font-size: 14px;
+    transition: all .25s ease-in-out !important;
+	box-shadow:none !important;
+    display: inline-block;
+    text-decoration: none;
+    color: white!important;
+    text-shadow:none;
+    border-radius: 45px;
+    text-transform: uppercase;
+    border:1px solid var(--accent-primary);
+    font-family: 'poppinssemibold';
+    margin: 10px;
+    cursor:pointer;
+}
+
+.btn-main:hover,
+.wp-block-file__button:hover {
+    background: var(--accent-primary-hover);
+    border-color:var(--accent-primary-hover);
+    color:white !important;
+    text-decoration: none;
+}
+
+.bg-accent .btn-main {
+    background: white;
+    color: var(--accent-primary) !important;
+}
+
+.bg-accent .btn-main:hover {
+    background: var(--light) !important;
+    color: var(--accent-primary) !important;
+}
+
+.bg-accent .text-link {
+    box-shadow:inset 0 -5px 0 0 white;
+    color:white;
+}
+.bg-accent .text-link:hover {
+    box-shadow:inset 0 -55px 0 0 white;
+    color:var(--accent-primary);
+}
+
+.btn-main.white, .btn-main.white a {
+    background: white;
+    color: var(--accent-primary)!important;
+    border:1px solid black;
+}
+
+.btn-main.white:hover {
+	background: var(--accent-primary);
+    color: white !important;
+    border-color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.btn-main.outline {
+    border: 1px solid var(--accent-secondary);
+    color:var(--accent-secondary) !important;
+    background:transparent;
+}
+
+.btn-main.outline:hover {
+    background: var(--accent-secondary);
+    color:white !important;
+}
+.btn-main.outline.accent {
+    border-color: var(--accent-primary);
+    color:var(--accent-primary);
+    background:transparent;
+}
+
+.btn-main.outline.accent:hover {
+    background: var(--accent-secondary);
+    color:white;
+}
+.btn-main.outline.white {
+    border-color: white;
+    color:white;
+    background:transparent;
+}
+
+.btn-main.outline.white:hover {
+    background: white;
+    color:black;
+}

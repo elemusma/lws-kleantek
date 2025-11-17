@@ -1,0 +1,72 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/content-about-links",
+  "version": "0.1.0",
+  "title": "Content About Links",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Example block scaffolded with Create Block tool.",
+  "example": {},
+  "supports": {
+    "html": true
+  },
+  "attributes": {
+    "classes": {
+      "type": "string",
+      "default": ""
+    },
+    "style": {
+      "type": "string",
+      "default": ""
+    },
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "section_image": {
+      "type": "number",
+      "default": 0
+    },
+    "section_image_alt": {
+      "type": "string",
+      "default": ""
+    },
+    "section_image_title": {
+      "type": "string",
+      "default": ""
+    },
+    "section_image_class": {
+      "type": "string",
+      "default": "w-100 h-100 position-absolute bg-img"
+    },
+    "section_image_style": {
+      "type": "string",
+      "default": "top:0;left:0;object-fit:cover;pointer-events:none;"
+    },
+    "sideLinks": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Link 1",
+          "url": "",
+          "target": "_self"
+        },
+        {
+          "title": "Link 2",
+          "url": "",
+          "target": "_self"
+        }
+      ]
+    },
+    "bottomImage": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "textdomain": "content-about-links",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
