@@ -28,6 +28,10 @@
       "type": "number",
       "default": 0
     },
+    "section_image_url": {
+      "type": "string",
+      "default": ""
+    },
     "section_image_alt": {
       "type": "string",
       "default": ""
@@ -62,6 +66,10 @@
     "bottomImage": {
       "type": "number",
       "default": 0
+    },
+    "bottomImage_url": {
+      "type": "string",
+      "default": ""
     }
   },
 	"textdomain": "content-about-links",

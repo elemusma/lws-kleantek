@@ -25,17 +25,17 @@
       "default": ""
     },
     "section_image": {
-      "type": "number",
-      "default": 0
-    },
-    "section_image_title": {
       "type": "string",
       "default": ""
     },
-    "section_image_alt": {
-      "type": "string",
-      "default": ""
-    },
+		"section_image_alt": {
+			"type": "string",
+			"default": null
+		},
+		"section_image_title": {
+			"type": "string",
+			"default": null
+		},
     "section_image_class": {
       "type": "string",
       "default": "w-100 h-100 position-absolute bg-img"
@@ -48,9 +48,21 @@
       "type": "string",
       "default": ""
     },
-    "topImage": {
-      "type": "number",
-      "default": 0
+    "top_image": {
+      "type": "string",
+      "default": ""
+    },
+    "top_image_alt": {
+      "type": "string",
+      "default": ""
+    },
+    "top_image_title": {
+      "type": "string",
+      "default": ""
+    },
+    "top_image_url": {
+      "type": "string",
+      "default": ""
     },
 	"sidebar_titles_class": {
 	  "type": "string",
@@ -86,16 +98,22 @@
       "type": "array",
       "default": [
         {
-          "image": 0,
-          "title": "Gallery Item 1"
+          "image": "",
+          "imageUrl": "",
+          "title": "Gallery Item 1",
+          "col_class": "col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"
         },
         {
-          "image": 0,
-          "title": "Gallery Item 2"
+          "image": "",
+          "imageUrl": "",
+          "title": "Gallery Item 2",
+          "col_class": "col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"
         },
         {
-          "image": 0,
-          "title": "Gallery Item 3"
+          "image": "",
+          "imageUrl": "",
+          "title": "Gallery Item 3",
+          "col_class": "col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"
         }
       ]
     },
@@ -103,22 +121,40 @@
       "type": "array",
       "default": [
         {
-          "image": 0,
-          "title": "Gallery Item 1"
+          "image": "",
+          "imageUrl": "",
+          "title": "Gallery Item 1",
+          "col_class": "col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"
         },
         {
-          "image": 0,
-          "title": "Gallery Item 2"
+          "image": "",
+          "imageUrl": "",
+          "title": "Gallery Item 2",
+          "col_class": "col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"
         },
         {
-          "image": 0,
-          "title": "Gallery Item 3"
+          "image": "",
+          "imageUrl": "",
+          "title": "Gallery Item 3",
+          "col_class": "col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"
         }
       ]
     },
-    "bottomImage": {
-      "type": "number",
-      "default": 0
+    "bottom_image": {
+      "type": "string",
+      "default": ""
+    },
+    "bottom_image_alt": {
+      "type": "string",
+      "default": ""
+    },
+    "bottom_image_title": {
+      "type": "string",
+      "default": ""
+    },
+    "bottom_image_url": {
+      "type": "string",
+      "default": ""
     }
   },
 	"textdomain": "content-honeycomb",

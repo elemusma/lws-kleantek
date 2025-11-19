@@ -49,12 +49,14 @@ export default function Edit( { attributes, setAttributes } ) {
 		style,
 		id,
 		section_image,
+		section_image_url,
 		section_image_alt,
 		section_image_title,
 		section_image_class,
 		section_image_style,
 		sideLinks,
 		bottomImage,
+		bottomImage_url,
 	} = attributes;
 
 	const blockProps = useBlockProps();
@@ -115,6 +117,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							onSelect={ ( media ) =>
 								setAttributes( {
 									section_image: media.id,
+									section_image_url: media.url,
 									section_image_alt: media.alt,
 									section_image_title:
 										media.title?.rendered ||
@@ -135,6 +138,7 @@ export default function Edit( { attributes, setAttributes } ) {
 												onClick={ () =>
 													setAttributes( {
 														section_image: 0,
+														section_image_url: '',
 														section_image_alt: '',
 														section_image_title: '',
 													} )
@@ -266,7 +270,10 @@ export default function Edit( { attributes, setAttributes } ) {
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) =>
-								setAttributes( { bottomImage: media.id } )
+								setAttributes( { 
+									bottomImage: media.id,
+									bottomImage_url: media.url,
+								} )
 							}
 							type="image"
 							allowedTypes={ [ 'image' ] }
@@ -281,6 +288,7 @@ export default function Edit( { attributes, setAttributes } ) {
 												onClick={ () =>
 													setAttributes( {
 														bottomImage: 0,
+														bottomImage_url: '',
 													} )
 												}
 											>

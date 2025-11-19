@@ -1,7 +1,7 @@
 .btn-main,
 .btn-main a,
 .wp-block-file__button {
-    background: var(--accent-primary);
+    background: var(--accent-secondary);
     padding: 10px 15px !important;
     font-size: 14px;
     transition: all .25s ease-in-out !important;
@@ -12,7 +12,7 @@
     text-shadow:none;
     border-radius: 45px;
     text-transform: uppercase;
-    border:1px solid var(--accent-primary);
+    border:1px solid var(--accent-secondary);
     font-family: 'poppinssemibold';
     margin: 10px;
     cursor:pointer;
@@ -87,4 +87,59 @@
 .btn-main.outline.white:hover {
     background: white;
     color:black;
+}
+
+.btn-pulse {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-pulse::before,
+.btn-pulse::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: inherit;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    z-index: -1;
+}
+
+.btn-pulse::before {
+    animation: pulse1 2s infinite;
+}
+
+.btn-pulse::after {
+    animation: pulse2 2s infinite 0.6s;
+}
+
+@keyframes pulse1 {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+    100% {
+        width: 125%;
+        height: 125%;
+        opacity: 0;
+    }
+}
+
+@keyframes pulse2 {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+    100% {
+        width: 125%;
+        height: 125%;
+        opacity: 0;
+    }
 }

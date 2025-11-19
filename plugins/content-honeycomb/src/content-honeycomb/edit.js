@@ -49,16 +49,20 @@ export default function Edit( { attributes, setAttributes } ) {
 		style,
 		id,
 		section_image,
-		section_image_alt,
 		section_image_title,
+		section_image_alt,
 		section_image_class,
 		section_image_style,
 		section_block,
-		topImage,
+		top_image,
+		top_image_alt,
+		top_image_title,
 		sidebarTitles,
 		topRowGallery,
 		bottomRowGallery,
-		bottomImage,
+		bottom_image,
+		bottom_image_alt,
+		bottom_image_title,
 		gallery_content_titles_class,
 		gallery_content_titles_style,
 		sidebar_titles_class,
@@ -87,17 +91,21 @@ export default function Edit( { attributes, setAttributes } ) {
 		setAttributes( { sidebarTitles: updated } );
 	};
 
-	// Update top row gallery item
+	// Update gallery item - handles both single field and object updates
 	const updateTopRowGallery = ( index, field, value ) => {
 		const updated = [ ...topRowGallery ];
-		updated[ index ] = { ...updated[ index ], [ field ]: value };
+		if ( typeof value === 'object' && value !== null ) {
+			updated[ index ] = { ...updated[ index ], ...value };
+		} else {
+			updated[ index ] = { ...updated[ index ], [ field ]: value };
+		}
 		setAttributes( { topRowGallery: updated } );
 	};
 
 	// Add top row gallery item
 	const addTopRowGallery = () => {
 		setAttributes( {
-			topRowGallery: [ ...topRowGallery, { image: 0, title: 'New Item' } ],
+			topRowGallery: [ ...topRowGallery, { imageUrl: '', imageAlt: '', imageTitle: '', title: 'New Item', col_class: 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h' } ],
 		} );
 	};
 
@@ -107,17 +115,21 @@ export default function Edit( { attributes, setAttributes } ) {
 		setAttributes( { topRowGallery: updated } );
 	};
 
-	// Update bottom row gallery item
+	// Update bottom gallery item - handles both single field and object updates
 	const updateBottomRowGallery = ( index, field, value ) => {
 		const updated = [ ...bottomRowGallery ];
-		updated[ index ] = { ...updated[ index ], [ field ]: value };
+		if ( typeof value === 'object' && value !== null ) {
+			updated[ index ] = { ...updated[ index ], ...value };
+		} else {
+			updated[ index ] = { ...updated[ index ], [ field ]: value };
+		}
 		setAttributes( { bottomRowGallery: updated } );
 	};
 
 	// Add bottom row gallery item
 	const addBottomRowGallery = () => {
 		setAttributes( {
-			bottomRowGallery: [ ...bottomRowGallery, { image: 0, title: 'New Item' } ],
+			bottomRowGallery: [ ...bottomRowGallery, { imageUrl: '', imageAlt: '', imageTitle: '', title: 'New Item', col_class: 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h' } ],
 		} );
 	};
 
@@ -160,56 +172,34 @@ export default function Edit( { attributes, setAttributes } ) {
 				>
 					<MediaUploadCheck>
 						<MediaUpload
-							onSelect={ ( media ) =>
-								setAttributes( {
-									section_image: media.id,
-									section_image_alt: media.alt,
-									section_image_title:
-										media.title?.rendered ||
-										media.title ||
-										'',
-								} )
-							}
+							onSelect={(media) => setAttributes({ section_image: media.url, section_image_alt: media.alt,section_image_title: media.title?.rendered || media.title || '' })}
 							type="image"
-							allowedTypes={ [ 'image' ] }
-							value={ section_image }
-							render={ ( { open } ) => (
+							allowedTypes={['image']}
+							value={section_image}
+							render={({ open }) => (
 								<div>
-									{ section_image && (
+									{section_image && (
 										<>
 											<Button
 												isLink
 												isDestructive
-												onClick={ () =>
-													setAttributes( {
-														section_image: 0,
-														section_image_alt: '',
-														section_image_title: '',
-													} )
-												}
+												onClick={() => setAttributes({ section_image: '', section_image_alt: '',section_image_title: '' })}
 											>
-												{ __( 'Remove Section Image' ) }
+												{__('Remove Section Image')}
 											</Button>
-											<p>
-												{ __( 'Image ID:' ) }{ ' ' }
-												{ section_image }
-											</p>
-											<p>
-												{ __( 'Alt Text:' ) }{ ' ' }
-												{ section_image_alt ||
-													section_image_title }
-											</p>
+											<img src={section_image} alt={section_image_alt || section_image_title} style={{maxWidth: '100%'}} />
+											<p>{__('Alt Text:')} {section_image_alt || section_image_title}</p>
 										</>
-									) }
+									)}
 									<Button
-										onClick={ open }
+										onClick={open}
 										icon="upload"
-										variant="primary"
+										className="editor-media-placeholder__button is-button is-default is-large"
 									>
-										{ __( 'Select Section Image' ) }
+										{__('Select Section Image')}
 									</Button>
 								</div>
-							) }
+							)}
 						/>
 					</MediaUploadCheck>
 
@@ -251,31 +241,40 @@ export default function Edit( { attributes, setAttributes } ) {
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) =>
-								setAttributes( { topImage: media.id } )
+								setAttributes( {
+									top_image: media.url,
+									top_image_alt: media.alt,
+									top_image_title: media.title?.rendered || media.title || '',
+								} )
 							}
 							type="image"
 							allowedTypes={ [ 'image' ] }
-							value={ topImage }
+							value={ top_image }
 							render={ ( { open } ) => (
 								<div>
-									{ topImage && (
+									{ top_image && (
 										<>
 											<Button
 												isLink
 												isDestructive
 												onClick={ () =>
 													setAttributes( {
-														topImage: 0,
+														top_image: '',
+														top_image_alt: '',
+														top_image_title: '',
 													} )
 												}
 											>
 												{ __( 'Remove Image' ) }
 											</Button>
+											<img
+												src={ top_image }
+												alt={ top_image_alt || top_image_title }
+												style={ { maxWidth: '100%' } }
+											/>
 											<p>
-												{ __(
-													'Image ID:'
-												) }
-												{ topImage }
+												{ __( 'Alt Text:' ) }{ ' ' }
+												{ top_image_alt || top_image_title }
 											</p>
 										</>
 									) }
@@ -392,34 +391,71 @@ export default function Edit( { attributes, setAttributes } ) {
 									onSelect={ ( media ) =>
 										updateTopRowGallery(
 											index,
-											'image',
-											media.id
+											null,
+											{ imageUrl: media.url, imageAlt: media.alt, imageTitle: media.title?.rendered || media.title || '' }
 										)
 									}
 									type="image"
-									allowedTypes={ [
-										'image',
-									] }
-									value={ item.image }
+									allowedTypes={ [ 'image' ] }
+									value={ item.imageUrl }
 									render={ ( { open } ) => (
-										<Button
-											onClick={ open }
-											variant="secondary"
-										>
-											{ item.image
-												? __(
-													'Change Image'
-												)
-												: __(
-													'Select Image'
-												) }
-										</Button>
+										<div>
+											{ item.imageUrl && (
+												<>
+													<img
+														src={ item.imageUrl }
+														alt={ item.imageAlt || item.imageTitle }
+														style={ { maxWidth: '100%', marginBottom: '10px' } }
+													/>
+													<p>
+														<strong>{ __( 'Alt Text:' ) }</strong> { item.imageAlt || item.imageTitle }
+													</p>
+												</>
+											) }
+											<Button
+												onClick={ open }
+												variant="secondary"
+											>
+												{ item.imageUrl
+													? __(
+														'Change Image'
+													)
+													: __(
+														'Select Image'
+													) }
+											</Button>
+											{ item.imageUrl && (
+												<Button
+													isLink
+													isDestructive
+													onClick={ () =>
+														updateTopRowGallery(
+															index,
+															null,
+															{ imageUrl: '', imageAlt: '', imageTitle: '' }
+														)
+													}
+													style={ { marginLeft: '10px' } }
+												>
+													{ __( 'Remove Image' ) }
+												</Button>
+											) }
+										</div>
 									) }
 								/>
 							</MediaUploadCheck>
-							{ item.image && (
-								<p>Image ID: { item.image }</p>
-							) }
+							
+							<TextControl
+								label={ __( 'Col Class Name' ) }
+								value={ item.col_class }
+								onChange={ ( value ) =>
+									updateTopRowGallery(
+										index,
+										'col_class',
+										value
+									)
+								}
+							/>
 							<TextControl
 								label={ __( 'Title' ) }
 								value={ item.title }
@@ -472,34 +508,71 @@ export default function Edit( { attributes, setAttributes } ) {
 									onSelect={ ( media ) =>
 										updateBottomRowGallery(
 											index,
-											'image',
-											media.id
+											null,
+											{ imageUrl: media.url, imageAlt: media.alt, imageTitle: media.title?.rendered || media.title || '' }
 										)
 									}
 									type="image"
-									allowedTypes={ [
-										'image',
-									] }
-									value={ item.image }
+									allowedTypes={ [ 'image' ] }
+									value={ item.imageUrl }
 									render={ ( { open } ) => (
-										<Button
-											onClick={ open }
-											variant="secondary"
-										>
-											{ item.image
-												? __(
-													'Change Image'
-												)
-												: __(
-													'Select Image'
-												) }
-										</Button>
+										<div>
+											{ item.imageUrl && (
+												<>
+													<img
+														src={ item.imageUrl }
+														alt={ item.imageAlt || item.imageTitle }
+														style={ { maxWidth: '100%', marginBottom: '10px' } }
+													/>
+													<p>
+														<strong>{ __( 'Alt Text:' ) }</strong> { item.imageAlt || item.imageTitle }
+													</p>
+												</>
+											) }
+											<Button
+												onClick={ open }
+												variant="secondary"
+											>
+												{ item.imageUrl
+													? __(
+														'Change Image'
+													)
+													: __(
+														'Select Image'
+													) }
+											</Button>
+											{ item.imageUrl && (
+												<Button
+													isLink
+													isDestructive
+													onClick={ () =>
+														updateBottomRowGallery(
+															index,
+															null,
+															{ imageUrl: '', imageAlt: '', imageTitle: '' }
+														)
+													}
+													style={ { marginLeft: '10px' } }
+												>
+													{ __( 'Remove Image' ) }
+												</Button>
+											) }
+										</div>
 									) }
 								/>
 							</MediaUploadCheck>
-							{ item.image && (
-								<p>Image ID: { item.image }</p>
-							) }
+							
+							<TextControl
+								label={ __( 'Col Class Name' ) }
+								value={ item.col_class }
+								onChange={ ( value ) =>
+									updateBottomRowGallery(
+										index,
+										'col_class',
+										value
+									)
+								}
+							/>
 							<TextControl
 								label={ __( 'Title' ) }
 								value={ item.title }
@@ -539,31 +612,40 @@ export default function Edit( { attributes, setAttributes } ) {
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) =>
-								setAttributes( { bottomImage: media.id } )
+								setAttributes( {
+									bottom_image: media.url,
+									bottom_image_alt: media.alt,
+									bottom_image_title: media.title?.rendered || media.title || '',
+								} )
 							}
 							type="image"
 							allowedTypes={ [ 'image' ] }
-							value={ bottomImage }
+							value={ bottom_image }
 							render={ ( { open } ) => (
 								<div>
-									{ bottomImage && (
+									{ bottom_image && (
 										<>
 											<Button
 												isLink
 												isDestructive
 												onClick={ () =>
 													setAttributes( {
-														bottomImage: 0,
+														bottom_image: '',
+														bottom_image_alt: '',
+														bottom_image_title: '',
 													} )
 												}
 											>
 												{ __( 'Remove Image' ) }
 											</Button>
+											<img
+												src={ bottom_image }
+												alt={ bottom_image_alt || bottom_image_title }
+												style={ { maxWidth: '100%' } }
+											/>
 											<p>
-												{ __(
-													'Image ID:'
-												) }
-												{ bottomImage }
+												{ __( 'Alt Text:' ) }{ ' ' }
+												{ bottom_image_alt || bottom_image_title }
 											</p>
 										</>
 									) }
@@ -588,7 +670,7 @@ export default function Edit( { attributes, setAttributes } ) {
 					{ section_image && (
 						<div style={ { marginBottom: '20px' } }>
 							<p>
-								<strong>Section Image ID:</strong> { section_image }
+								<strong>Section Image:</strong> { section_image }
 							</p>
 						</div>
 					) }
@@ -601,10 +683,10 @@ export default function Edit( { attributes, setAttributes } ) {
 						</div>
 					) }
 
-					{ topImage && (
+					{ top_image && (
 						<div style={ { marginBottom: '20px' } }>
 							<p>
-								<strong>Top Image ID:</strong> { topImage }
+								<strong>Top Image:</strong> { top_image }
 							</p>
 						</div>
 					) }
@@ -631,8 +713,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								{ topRowGallery.map(
 									( item, index ) => (
 										<li key={ index }>
-											{ item.title } (ID:
-											{ item.image })
+											{ item.title }
 										</li>
 									)
 								) }
@@ -665,8 +746,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								{ bottomRowGallery.map(
 									( item, index ) => (
 										<li key={ index }>
-											{ item.title } (ID:
-											{ item.image })
+											{ item.title }
 										</li>
 									)
 								) }
@@ -674,11 +754,11 @@ export default function Edit( { attributes, setAttributes } ) {
 						</div>
 					) }
 
-					{ bottomImage && (
+					{ bottom_image && (
 						<div>
 							<p>
-								<strong>Bottom Image ID:</strong>{' '}
-								{ bottomImage }
+								<strong>Bottom Image:</strong>{' '}
+								{ bottom_image }
 							</p>
 						</div>
 					) }

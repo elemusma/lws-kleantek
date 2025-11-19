@@ -10,3 +10,11 @@
     transform: translate(-50%, -50%);
     z-index: -1;
 }
+
+.columns img {
+    transition:all 0.25s ease-in-out;
+}
+
+.columns img:hover {
+    transform:scale(1.1);
+}

@@ -20,12 +20,12 @@ Thumbs.db
 # Composer vendor directory
 /vendor/
 
+wp-content/themes/twentytwentyfive/
+
 # WordPress core files (if not versioning the whole WP install)
 wp-admin/
 wp-includes/
-*.php
 *.txt
-index.php
 license.txt
 readme.html
 wp-*.php

@@ -8,7 +8,7 @@
   \******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/content-honeycomb","version":"0.1.0","title":"Content Honeycomb","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":true},"attributes":{"classes":{"type":"string","default":""},"style":{"type":"string","default":"padding:50px 0;overflow:hidden;"},"id":{"type":"string","default":""},"section_image":{"type":"number","default":0},"section_image_title":{"type":"string","default":""},"section_image_alt":{"type":"string","default":""},"section_image_class":{"type":"string","default":"w-100 h-100 position-absolute bg-img"},"section_image_style":{"type":"string","default":"top:0;left:0;object-fit:cover;pointer-events:none;"},"section_block":{"type":"string","default":""},"topImage":{"type":"number","default":0},"sidebar_titles_class":{"type":"string","default":"col-lg-3 order-md-2 order-2"},"sidebar_titles_style":{"type":"string","default":""},"gallery_content_titles_class":{"type":"string","default":"col-lg-9 order-md-2 order1"},"gallery_content_titles_style":{"type":"string","default":""},"sidebarTitles":{"type":"array","default":[{"title":"Title 1"},{"title":"Title 2"},{"title":"Title 3"}]},"topRowGallery":{"type":"array","default":[{"image":0,"title":"Gallery Item 1"},{"image":0,"title":"Gallery Item 2"},{"image":0,"title":"Gallery Item 3"}]},"bottomRowGallery":{"type":"array","default":[{"image":0,"title":"Gallery Item 1"},{"image":0,"title":"Gallery Item 2"},{"image":0,"title":"Gallery Item 3"}]},"bottomImage":{"type":"number","default":0}},"textdomain":"content-honeycomb","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/content-honeycomb","version":"0.1.0","title":"Content Honeycomb","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":true},"attributes":{"classes":{"type":"string","default":""},"style":{"type":"string","default":"padding:50px 0;overflow:hidden;"},"id":{"type":"string","default":""},"section_image":{"type":"string","default":""},"section_image_alt":{"type":"string","default":null},"section_image_title":{"type":"string","default":null},"section_image_class":{"type":"string","default":"w-100 h-100 position-absolute bg-img"},"section_image_style":{"type":"string","default":"top:0;left:0;object-fit:cover;pointer-events:none;"},"section_block":{"type":"string","default":""},"top_image":{"type":"string","default":""},"top_image_alt":{"type":"string","default":""},"top_image_title":{"type":"string","default":""},"top_image_url":{"type":"string","default":""},"sidebar_titles_class":{"type":"string","default":"col-lg-3 order-md-2 order-2"},"sidebar_titles_style":{"type":"string","default":""},"gallery_content_titles_class":{"type":"string","default":"col-lg-9 order-md-2 order1"},"gallery_content_titles_style":{"type":"string","default":""},"sidebarTitles":{"type":"array","default":[{"title":"Title 1"},{"title":"Title 2"},{"title":"Title 3"}]},"topRowGallery":{"type":"array","default":[{"image":"","imageUrl":"","title":"Gallery Item 1","col_class":"col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"},{"image":"","imageUrl":"","title":"Gallery Item 2","col_class":"col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"},{"image":"","imageUrl":"","title":"Gallery Item 3","col_class":"col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"}]},"bottomRowGallery":{"type":"array","default":[{"image":"","imageUrl":"","title":"Gallery Item 1","col_class":"col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"},{"image":"","imageUrl":"","title":"Gallery Item 2","col_class":"col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"},{"image":"","imageUrl":"","title":"Gallery Item 3","col_class":"col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"}]},"bottom_image":{"type":"string","default":""},"bottom_image_alt":{"type":"string","default":""},"bottom_image_title":{"type":"string","default":""},"bottom_image_url":{"type":"string","default":""}},"textdomain":"content-honeycomb","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -73,16 +73,20 @@ function Edit({
     style,
     id,
     section_image,
-    section_image_alt,
     section_image_title,
+    section_image_alt,
     section_image_class,
     section_image_style,
     section_block,
-    topImage,
+    top_image,
+    top_image_alt,
+    top_image_title,
     sidebarTitles,
     topRowGallery,
     bottomRowGallery,
-    bottomImage,
+    bottom_image,
+    bottom_image_alt,
+    bottom_image_title,
     gallery_content_titles_class,
     gallery_content_titles_style,
     sidebar_titles_class,
@@ -116,13 +120,20 @@ function Edit({
     });
   };
 
-  // Update top row gallery item
+  // Update gallery item - handles both single field and object updates
   const updateTopRowGallery = (index, field, value) => {
     const updated = [...topRowGallery];
-    updated[index] = {
-      ...updated[index],
-      [field]: value
-    };
+    if (typeof value === 'object' && value !== null) {
+      updated[index] = {
+        ...updated[index],
+        ...value
+      };
+    } else {
+      updated[index] = {
+        ...updated[index],
+        [field]: value
+      };
+    }
     setAttributes({
       topRowGallery: updated
     });
@@ -132,8 +143,11 @@ function Edit({
   const addTopRowGallery = () => {
     setAttributes({
       topRowGallery: [...topRowGallery, {
-        image: 0,
-        title: 'New Item'
+        imageUrl: '',
+        imageAlt: '',
+        imageTitle: '',
+        title: 'New Item',
+        col_class: 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h'
       }]
     });
   };
@@ -146,13 +160,20 @@ function Edit({
     });
   };
 
-  // Update bottom row gallery item
+  // Update bottom gallery item - handles both single field and object updates
   const updateBottomRowGallery = (index, field, value) => {
     const updated = [...bottomRowGallery];
-    updated[index] = {
-      ...updated[index],
-      [field]: value
-    };
+    if (typeof value === 'object' && value !== null) {
+      updated[index] = {
+        ...updated[index],
+        ...value
+      };
+    } else {
+      updated[index] = {
+        ...updated[index],
+        [field]: value
+      };
+    }
     setAttributes({
       bottomRowGallery: updated
     });
@@ -162,8 +183,11 @@ function Edit({
   const addBottomRowGallery = () => {
     setAttributes({
       bottomRowGallery: [...bottomRowGallery, {
-        image: 0,
-        title: 'New Item'
+        imageUrl: '',
+        imageAlt: '',
+        imageTitle: '',
+        title: 'New Item',
+        col_class: 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h'
       }]
     });
   };
@@ -205,7 +229,7 @@ function Edit({
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
             onSelect: media => setAttributes({
-              section_image: media.id,
+              section_image: media.url,
               section_image_alt: media.alt,
               section_image_title: media.title?.rendered || media.title || ''
             }),
@@ -220,20 +244,24 @@ function Edit({
                   isLink: true,
                   isDestructive: true,
                   onClick: () => setAttributes({
-                    section_image: 0,
+                    section_image: '',
                     section_image_alt: '',
                     section_image_title: ''
                   }),
                   children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove Section Image')
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                  src: section_image,
+                  alt: section_image_alt || section_image_title,
+                  style: {
+                    maxWidth: '100%'
+                  }
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                  children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Image ID:'), ' ', section_image]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                  children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Alt Text:'), ' ', section_image_alt || section_image_title]
+                  children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Alt Text:'), " ", section_image_alt || section_image_title]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
                 onClick: open,
                 icon: "upload",
-                variant: "primary",
+                className: "editor-media-placeholder__button is-button is-default is-large",
                 children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Select Section Image')
               })]
             })
@@ -277,24 +305,34 @@ function Edit({
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
             onSelect: media => setAttributes({
-              topImage: media.id
+              top_image: media.url,
+              top_image_alt: media.alt,
+              top_image_title: media.title?.rendered || media.title || ''
             }),
             type: "image",
             allowedTypes: ['image'],
-            value: topImage,
+            value: top_image,
             render: ({
               open
             }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              children: [topImage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+              children: [top_image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
                   isLink: true,
                   isDestructive: true,
                   onClick: () => setAttributes({
-                    topImage: 0
+                    top_image: '',
+                    top_image_alt: '',
+                    top_image_title: ''
                   }),
                   children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove Image')
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                  src: top_image,
+                  alt: top_image_alt || top_image_title,
+                  style: {
+                    maxWidth: '100%'
+                  }
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                  children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Image ID:'), topImage]
+                  children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Alt Text:'), ' ', top_image_alt || top_image_title]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
                 onClick: open,
@@ -372,20 +410,53 @@ function Edit({
             children: `Item ${index + 1}`
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
-              onSelect: media => updateTopRowGallery(index, 'image', media.id),
+              onSelect: media => updateTopRowGallery(index, null, {
+                imageUrl: media.url,
+                imageAlt: media.alt,
+                imageTitle: media.title?.rendered || media.title || ''
+              }),
               type: "image",
               allowedTypes: ['image'],
-              value: item.image,
+              value: item.imageUrl,
               render: ({
                 open
-              }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-                onClick: open,
-                variant: "secondary",
-                children: item.image ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Change Image') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Select Image')
+              }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                children: [item.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                    src: item.imageUrl,
+                    alt: item.imageAlt || item.imageTitle,
+                    style: {
+                      maxWidth: '100%',
+                      marginBottom: '10px'
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Alt Text:')
+                    }), " ", item.imageAlt || item.imageTitle]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+                  onClick: open,
+                  variant: "secondary",
+                  children: item.imageUrl ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Change Image') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Select Image')
+                }), item.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+                  isLink: true,
+                  isDestructive: true,
+                  onClick: () => updateTopRowGallery(index, null, {
+                    imageUrl: '',
+                    imageAlt: '',
+                    imageTitle: ''
+                  }),
+                  style: {
+                    marginLeft: '10px'
+                  },
+                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove Image')
+                })]
               })
             })
-          }), item.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-            children: ["Image ID: ", item.image]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Col Class Name'),
+            value: item.col_class,
+            onChange: value => updateTopRowGallery(index, 'col_class', value)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title'),
             value: item.title,
@@ -415,20 +486,53 @@ function Edit({
             children: `Item ${index + 1}`
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
-              onSelect: media => updateBottomRowGallery(index, 'image', media.id),
+              onSelect: media => updateBottomRowGallery(index, null, {
+                imageUrl: media.url,
+                imageAlt: media.alt,
+                imageTitle: media.title?.rendered || media.title || ''
+              }),
               type: "image",
               allowedTypes: ['image'],
-              value: item.image,
+              value: item.imageUrl,
               render: ({
                 open
-              }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-                onClick: open,
-                variant: "secondary",
-                children: item.image ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Change Image') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Select Image')
+              }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                children: [item.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                    src: item.imageUrl,
+                    alt: item.imageAlt || item.imageTitle,
+                    style: {
+                      maxWidth: '100%',
+                      marginBottom: '10px'
+                    }
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
+                      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Alt Text:')
+                    }), " ", item.imageAlt || item.imageTitle]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+                  onClick: open,
+                  variant: "secondary",
+                  children: item.imageUrl ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Change Image') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Select Image')
+                }), item.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+                  isLink: true,
+                  isDestructive: true,
+                  onClick: () => updateBottomRowGallery(index, null, {
+                    imageUrl: '',
+                    imageAlt: '',
+                    imageTitle: ''
+                  }),
+                  style: {
+                    marginLeft: '10px'
+                  },
+                  children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove Image')
+                })]
               })
             })
-          }), item.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-            children: ["Image ID: ", item.image]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Col Class Name'),
+            value: item.col_class,
+            onChange: value => updateBottomRowGallery(index, 'col_class', value)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title'),
             value: item.title,
@@ -450,24 +554,34 @@ function Edit({
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
             onSelect: media => setAttributes({
-              bottomImage: media.id
+              bottom_image: media.url,
+              bottom_image_alt: media.alt,
+              bottom_image_title: media.title?.rendered || media.title || ''
             }),
             type: "image",
             allowedTypes: ['image'],
-            value: bottomImage,
+            value: bottom_image,
             render: ({
               open
             }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              children: [bottomImage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+              children: [bottom_image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
                   isLink: true,
                   isDestructive: true,
                   onClick: () => setAttributes({
-                    bottomImage: 0
+                    bottom_image: '',
+                    bottom_image_alt: '',
+                    bottom_image_title: ''
                   }),
                   children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Remove Image')
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                  src: bottom_image,
+                  alt: bottom_image_alt || bottom_image_title,
+                  style: {
+                    maxWidth: '100%'
+                  }
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                  children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Image ID:'), bottomImage]
+                  children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Alt Text:'), ' ', bottom_image_alt || bottom_image_title]
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
                 onClick: open,
@@ -494,7 +608,7 @@ function Edit({
           },
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-              children: "Section Image ID:"
+              children: "Section Image:"
             }), " ", section_image]
           })
         }), section_block && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -506,14 +620,14 @@ function Edit({
               children: "Code Block Present"
             })
           })
-        }), topImage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        }), top_image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           style: {
             marginBottom: '20px'
           },
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-              children: "Top Image ID:"
-            }), " ", topImage]
+              children: "Top Image:"
+            }), " ", top_image]
           })
         }), sidebarTitles.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           style: {
@@ -533,8 +647,8 @@ function Edit({
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Top Gallery')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
-            children: topRowGallery.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-              children: [item.title, " (ID:", item.image, ")"]
+            children: topRowGallery.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+              children: item.title
             }, index))
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -556,15 +670,15 @@ function Edit({
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Bottom Gallery')
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
-            children: bottomRowGallery.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-              children: [item.title, " (ID:", item.image, ")"]
+            children: bottomRowGallery.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+              children: item.title
             }, index))
           })]
-        }), bottomImage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        }), bottom_image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-              children: "Bottom Image ID:"
-            }), ' ', bottomImage]
+              children: "Bottom Image:"
+            }), ' ', bottom_image]
           })
         })]
       })
@@ -688,11 +802,11 @@ function save({
     section_image_class,
     section_image_style,
     section_block,
-    topImage,
+    top_image,
     sidebarTitles,
     topRowGallery,
     bottomRowGallery,
-    bottomImage,
+    bottom_image,
     gallery_content_titles_class,
     gallery_content_titles_style,
     sidebar_titles_class,
@@ -706,10 +820,10 @@ function save({
       style: `padding:50px 0;overflow:hidden;${style}`,
       id: id,
       children: [section_image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-        src: `${window.wp?.data?.select('core')?.getEntityRecord('postType', 'attachment', section_image)?.source_url || '#'}`,
+        src: section_image,
         alt: section_image_alt || section_image_title,
-        className: section_image_class,
-        style: section_image_style
+        className: `${section_image_class}`,
+        style: `${section_image_style}`
       }), section_block && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.RawHTML, {
         children: section_block
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -719,9 +833,9 @@ function save({
           style: {
             padding: '50px 0px'
           },
-          children: topImage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-            src: `${window.wp?.data?.select('core')?.getEntityRecord('postType', 'attachment', topImage)?.source_url || '#'}`,
-            alt: "Top section image",
+          children: top_image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            src: attributes.top_image,
+            alt: attributes.top_image_alt || attributes.top_image_title,
             className: "w-100 h-auto"
           })
         })
@@ -737,7 +851,7 @@ function save({
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
               className: "list-unstyled ul-applications",
               children: sidebarTitles.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-                className: "text-accent-green-1 handel",
+                className: "text-accent proxima",
                 children: item.title
               }, index))
             })
@@ -751,14 +865,14 @@ function save({
                 children: topRowGallery.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "row position-relative justify-content-end",
                   children: topRowGallery.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                    className: "col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h",
+                    className: item.col_class,
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                       className: "overlay-custom position-absolute w-100 h-100 z-1",
                       style: {
                         pointerEvents: 'none'
                       }
-                    }), item.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                      src: `${window.wp?.data?.select('core')?.getEntityRecord('postType', 'attachment', item.image)?.source_url || '#'}`,
+                    }), item.image && item.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                      src: item.imageUrl,
                       alt: item.title,
                       className: "w-100 h-100 position-absolute bg-img"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -786,14 +900,14 @@ function save({
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "row position-relative justify-content-start",
                   children: bottomRowGallery.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-                    className: "col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h",
+                    className: item.col_class,
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                       className: "overlay-custom position-absolute w-100 h-100 z-1",
                       style: {
                         pointerEvents: 'none'
                       }
-                    }), item.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                      src: `${window.wp?.data?.select('core')?.getEntityRecord('postType', 'attachment', item.image)?.source_url || '#'}`,
+                    }), item.image && item.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                      src: item.imageUrl,
                       alt: item.title,
                       className: "w-100 h-100 position-absolute bg-img"
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -816,8 +930,8 @@ function save({
           style: {
             paddingTop: '100px'
           },
-          children: bottomImage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-            src: `${window.wp?.data?.select('core')?.getEntityRecord('postType', 'attachment', bottomImage)?.source_url || '#'}`,
+          children: bottom_image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            src: attributes.bottom_image,
             alt: "Bottom section image",
             className: "w-100 h-auto"
           })

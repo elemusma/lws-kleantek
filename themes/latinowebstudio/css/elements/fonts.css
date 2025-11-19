@@ -126,6 +126,10 @@ h6,.h6{
   font-weight:800;
 }
 
+.gotham {
+  font-family: "gotham", sans-serif;
+}
+
 .light {
   font-family: 'poppinslight';
 }
@@ -233,6 +237,14 @@ h1,
   font-weight: 400;
 }
 
+.proxima {
+  font-family: 'proxima_novaregular';
+  font-weight: 400;
+}
+.proxima.bold {
+  font-family: 'proxima_novabold';
+}
+
 /* 
 font-family: cormorant-garamond, serif; 
 font-weight:300;
@@ -252,3 +264,70 @@ Dreamboat Bold
 font-family: "dreamboat", sans-serif;
 font-weight: 700;
 font-style: normal; */
+
+/* 
+Gotham Book
+font-family: "gotham", sans-serif;
+font-weight: 400;
+font-style: normal;
+Gotham Book Italic
+font-family: "gotham", sans-serif;
+font-weight: 400;
+font-style: italic;
+Gotham Bold
+font-family: "gotham", sans-serif;
+font-weight: 700;
+font-style: normal;
+Gotham Bold Italic
+font-family: "gotham", sans-serif;
+font-weight: 700;
+font-style: italic;
+Gotham XNarrow Book
+font-family: "gotham-xnarrow", sans-serif;
+font-weight: 300;
+font-style: normal;
+Gotham XNarrow Book Italic
+font-family: "gotham-xnarrow", sans-serif;
+font-weight: 300;
+font-style: italic;
+Gotham XNarrow Bold
+font-family: "gotham-xnarrow", sans-serif;
+font-weight: 700;
+font-style: normal;
+Gotham XNarrow Bold Italic
+font-family: "gotham-xnarrow", sans-serif;
+font-weight: 700;
+font-style: italic;
+Gotham Condensed Book
+font-family: "gotham-condensed", sans-serif;
+font-weight: 400;
+font-style: normal;
+Gotham Condensed Book Italic
+font-family: "gotham-condensed", sans-serif;
+font-weight: 400;
+font-style: italic;
+Gotham Condensed Black
+font-family: "gotham-condensed", sans-serif;
+font-weight: 700;
+font-style: normal;
+Gotham Condensed Black Italic
+font-family: "gotham-condensed", sans-serif;
+font-weight: 700;
+font-style: italic;
+Gotham Narrow Book
+font-family: "gotham-narrow", sans-serif;
+font-weight: 400;
+font-style: normal;
+Gotham Narrow Book Italic
+font-family: "gotham-narrow", sans-serif;
+font-weight: 400;
+font-style: italic;
+Gotham Narrow Bold
+font-family: "gotham-narrow", sans-serif;
+font-weight: 700;
+font-style: normal;
+Gotham Narrow Bold Italic
+font-family: "gotham-narrow", sans-serif;
+font-weight: 700;
+font-style: italic;
+*/

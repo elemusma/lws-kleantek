@@ -1,12 +1,13 @@
 :root {
-  --accent-primary-lighter: #da2f35;
+  --accent-primary-lighter: #A3C7CC;
   --accent-primary: #87b7bd;
   --accent-primary-rgb: 135, 183, 189;
-  --accent-primary-darker: #0E7AC6;
-  --accent-primary-hover: #8B181C;
-  --accent-secondary: #32647d;
-  --accent-secondary-hover: #141414;
-  --accent-tertiary: #8bc3c9;
+  --accent-primary-darker: #61A0A8;
+  --accent-primary-hover: #508991;
+  --accent-secondary: #ffa900;
+  --accent-secondary-hover: #E09600;
+  --accent-tertiary: #58bee4;
+  --accent-quaternary: #86c1a9;
   --light: gainsboro;
   --light-secondary: #e8edec;
   --text-shadow: 1px 1px 3px black;

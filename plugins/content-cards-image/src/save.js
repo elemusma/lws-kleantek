@@ -38,6 +38,7 @@ export default function save( { attributes } ) {
 
 				<RawHTML>{ attributes.section_block }</RawHTML>
 
+				
 				<div
 					className={ attributes.container_class }
 					style={ attributes.container_style }
@@ -48,13 +49,16 @@ export default function save( { attributes } ) {
 						style={ attributes.row_style }
 						id={ attributes.row_id }
 					>
-						<div
-						className={ attributes.col_class }
-						style={ attributes.col_style }
-						id={ attributes.col_id }
-					>
-						<InnerBlocks.Content />
-					</div>
+  <div className={ attributes.col_class } style={ attributes.col_style } id={ attributes.col_id } > 
+    <InnerBlocks.Content /> 
+  </div>
+</div>
+</div>
+
+<div
+className={ attributes.columns_container_class }
+style={ attributes.columns_container_style }
+id={ attributes.columns_container_id }>
 					<div
 						className={ attributes.columns_class }
 						style={ attributes.columns_style }
@@ -82,19 +86,18 @@ export default function save( { attributes } ) {
 										{ column.code_block && (
 											<RawHTML>{ column.code_block }</RawHTML>
 										)}
-										<div className='' style={{}}>
-										
-										<h3 className={`h6 bold`} style={{marginTop:'0px'}}>
-											<RichText.Content
-												value={ column.title }
-											/>
-										</h3>
-										<p style={ { marginBottom: '0px' } }>
-											<RichText.Content
-												value={ column.content }
-											/>
-										</p>
-										</div>
+										<div>
+								{column.title ? (
+									<h3 className="h6 bold" style={{ marginTop: '0px' }}>
+									<RichText.Content value={column.title} />
+									</h3>
+								) : column.content ? (
+									<p style={{ marginBottom: '0px' }}>
+									<RichText.Content value={column.content} />
+									</p>
+								) : null}
+								</div>
+
 									</div>
 								</div>
 							);
@@ -102,7 +105,7 @@ export default function save( { attributes } ) {
 </div> {/** end of columns */}
 
 					</div> {/** end of row */}
-				</div>
+				{/* </div> * end of container */}
 
 				
 			</section>

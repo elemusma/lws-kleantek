@@ -1,10 +1,27 @@
+button.owl-prev,
+button.owl-next {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+}
+
+button.owl-next {
+    left: unset;
+    right: 10px;
+}
+
+button.owl-next img,
+button.owl-prev img {
+    width: 35px;
+}
+
 .owl-carousel .owl-item {
     transition: transform 0.5s ease;
 }
 
-.owl-nav button img {
+/* .owl-nav button img {
     width: 100px;
-}
+} */
 
 /* .owl-item.is-next img {
     object-position: left;

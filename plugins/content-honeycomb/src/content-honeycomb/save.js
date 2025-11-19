@@ -27,11 +27,11 @@ export default function save( { attributes } ) {
 		section_image_class,
 		section_image_style,
 		section_block,
-		topImage,
+		top_image,
 		sidebarTitles,
 		topRowGallery,
 		bottomRowGallery,
-		bottomImage,
+		bottom_image,
 		gallery_content_titles_class,
 		gallery_content_titles_style,
 		sidebar_titles_class,
@@ -50,18 +50,13 @@ export default function save( { attributes } ) {
 				{ /* Background image */ }
 				{ section_image && (
 					<img
-						src={ `${
-							window.wp?.data
-								?.select( 'core' )
-								?.getEntityRecord(
-									'postType',
-									'attachment',
-									section_image
-								)?.source_url || '#'
-						}` }
-						alt={ section_image_alt || section_image_title }
-						className={ section_image_class }
-						style={ section_image_style }
+						src={ section_image }
+						alt={
+							section_image_alt ||
+							section_image_title
+						}
+						className={ `${ section_image_class }` }
+						style={ `${ section_image_style }` }
 					/>
 				) }
 
@@ -70,18 +65,10 @@ export default function save( { attributes } ) {
 
 				<div className="container">
 					<div className="col-12" style={ { padding: '50px 0px' } }>
-						{ topImage && (
+						{ top_image && (
 							<img
-								src={ `${
-									window.wp?.data
-										?.select( 'core' )
-										?.getEntityRecord(
-											'postType',
-											'attachment',
-											topImage
-										)?.source_url || '#'
-								}` }
-								alt="Top section image"
+								src={ attributes.top_image }
+								alt={ attributes.top_image_alt || attributes.top_image_title }
 								className="w-100 h-auto"
 							/>
 						) }
@@ -103,7 +90,7 @@ export default function save( { attributes } ) {
 										( item, index ) => (
 											<li
 												key={ index }
-												className="text-accent-green-1 handel"
+												className="text-accent proxima"
 											>
 												{ item.title }
 											</li>
@@ -127,7 +114,7 @@ export default function save( { attributes } ) {
 												) => (
 													<div
 														key={ index }
-														className="col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"
+														className={item.col_class}
 													>
 														<div
 															className="overlay-custom position-absolute w-100 h-100 z-1"
@@ -136,21 +123,9 @@ export default function save( { attributes } ) {
 																	'none',
 															} }
 														></div>
-														{ item.image && (
+														{ item.image && item.imageUrl && (
 															<img
-																src={ `${
-																	window.wp?.data
-																		?.select(
-																			'core'
-																		)
-																		?.getEntityRecord(
-																			'postType',
-																			'attachment',
-																			item.image
-																		)
-																		?.source_url ||
-																	'#'
-																}` }
+																src={ item.imageUrl }
 																alt={ item.title }
 																className="w-100 h-100 position-absolute bg-img"
 															/>
@@ -192,7 +167,7 @@ export default function save( { attributes } ) {
 												) => (
 													<div
 														key={ index }
-														className="col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"
+														className={item.col_class}
 													>
 														<div
 															className="overlay-custom position-absolute w-100 h-100 z-1"
@@ -201,21 +176,9 @@ export default function save( { attributes } ) {
 																	'none',
 															} }
 														></div>
-														{ item.image && (
+														{ item.image && item.imageUrl && (
 															<img
-																src={ `${
-																	window.wp?.data
-																		?.select(
-																			'core'
-																		)
-																		?.getEntityRecord(
-																			'postType',
-																			'attachment',
-																			item.image
-																		)
-																		?.source_url ||
-																	'#'
-																}` }
+																src={ item.imageUrl }
 																alt={ item.title }
 																className="w-100 h-100 position-absolute bg-img"
 															/>
@@ -238,17 +201,9 @@ export default function save( { attributes } ) {
 
 				<div className="container">
 					<div className="col-12" style={ { paddingTop: '100px' } }>
-						{ bottomImage && (
+						{ bottom_image && (
 							<img
-								src={ `${
-									window.wp?.data
-										?.select( 'core' )
-										?.getEntityRecord(
-											'postType',
-											'attachment',
-											bottomImage
-										)?.source_url || '#'
-								}` }
+								src={ attributes.bottom_image }
 								alt="Bottom section image"
 								className="w-100 h-auto"
 							/>

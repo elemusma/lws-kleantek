@@ -31,12 +31,12 @@ $('.products-carousel').owlCarousel({
     }
 });
 
-$('.styku-scanner-carousel').owlCarousel({
+$('.carousel-work').owlCarousel({
     // center: true,
     loop: false,
     margin: 40,
     nav: true,
-    dots: true,
+    dots: false,
     autoHeight: false,
     // autoHeightClass: 'owl-height',
     // stagePadding:170,
@@ -46,21 +46,22 @@ $('.styku-scanner-carousel').owlCarousel({
     autoplayHoverPause: false,
     animateIn: 'fadeIn',
     animateOut: 'fadeOut',
-    // navText : ["<img src='https://resources.latinowebstudio.com/wp-content/uploads/2024/10/Arrow-within-Circle-Left-Gray.png' />","<img src='https://resources.latinowebstudio.com/wp-content/uploads/2024/10/Arrow-within-Circle-Right-Gray.png' />"],
-    responsive: {
-        0: {
-            items: 1,
-            // slideBy: 2
-        },
-        600: {
-            items: 2,
-            // slideBy: 3
-        },
-        1000: {
-            items: 2,
-            slideBy: 1
-        }
-    }
+    navText : ["<img src='/wp-content/uploads/2025/11/Arrow-Circle-White-Left.png' />","<img src='/wp-content/uploads/2025/11/Arrow-Circle-White-Right.png' />"],
+    items:1,
+    // responsive: {
+    //     0: {
+    //         items: 1,
+    //         // slideBy: 2
+    //     },
+    //     600: {
+    //         items: 2,
+    //         // slideBy: 3
+    //     },
+    //     1000: {
+    //         items: 2,
+    //         slideBy: 1
+    //     }
+    // }
 });
  // Initialize carousel-cars
   var $carouselCars = $('.carousel-cars');
