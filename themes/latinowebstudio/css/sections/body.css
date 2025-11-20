@@ -8,6 +8,10 @@
   --accent-secondary-hover: #E09600;
   --accent-tertiary: #58bee4;
   --accent-quaternary: #86c1a9;
+  --accent-quinary: #0c1748;
+  --accent-senary: #32647d;
+  --accent-septenary: #0277a3;
+  --accent-octonary: #0e4863;
   --light: gainsboro;
   --light-secondary: #e8edec;
   --text-shadow: 1px 1px 3px black;
@@ -49,6 +53,24 @@ a.bg-accent:hover {
 
 .bg-accent-secondary {
   background: var(--accent-secondary);
+}
+.bg-accent-tertiary {
+  background: var(--accent-tertiary);
+}
+.bg-accent-quaternary {
+  background: var(--accent-quaternary);
+}
+.bg-accent-quinary {
+  background: var(--accent-quinary);
+}
+.bg-accent-senary {
+  background: var(--accent-senary);
+}
+.bg-accent-septenary {
+  background: var(--accent-septenary);
+}
+.bg-accent-octonary {
+  background: var(--accent-octonary);
 }
 
 a.bg-accent-secondary:hover {

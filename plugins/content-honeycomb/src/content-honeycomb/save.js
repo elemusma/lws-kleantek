@@ -115,6 +115,8 @@ export default function save( { attributes } ) {
 													<div
 														key={ index }
 														className={item.col_class}
+														data-aos={item.data_aos}
+														data-aos-delay={item.data_aos_delay}
 													>
 														<div
 															className="overlay-custom position-absolute w-100 h-100 z-1"
@@ -131,7 +133,7 @@ export default function save( { attributes } ) {
 															/>
 														) }
 														<div className="position-relative z-1 w-100">
-															<h3 className="mb-0 heading text-uppercase h5 handel">
+															<h3 className="mb-0 heading text-uppercase h5 gotham">
 																{ item.title }
 															</h3>
 														</div>
@@ -168,6 +170,8 @@ export default function save( { attributes } ) {
 													<div
 														key={ index }
 														className={item.col_class}
+														data-aos={item.data_aos}
+														data-aos-delay={item.data_aos_delay}
 													>
 														<div
 															className="overlay-custom position-absolute w-100 h-100 z-1"
@@ -184,7 +188,7 @@ export default function save( { attributes } ) {
 															/>
 														) }
 														<div className="position-relative z-1 w-100">
-															<h3 className="mb-0 heading text-uppercase h5 handel">
+															<h3 className="mb-0 heading text-uppercase h5 gotham">
 																{ item.title }
 															</h3>
 														</div>

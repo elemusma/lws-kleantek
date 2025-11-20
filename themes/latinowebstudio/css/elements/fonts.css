@@ -33,6 +33,15 @@ a {
 .text-accent-tertiary {
   color: var(--accent-tertiary);
 }
+.text-accent-quaternary {
+  color: var(--accent-quaternary);
+}
+.text-accent-quinary {
+  color: var(--accent-quinary);
+}
+.text-accent-senary {
+  color: var(--accent-senary);
+}
 
 .text-gray {
   color: #585556;
@@ -244,6 +253,10 @@ h1,
 .proxima.bold {
   font-family: 'proxima_novabold';
 }
+.times {
+  font-family: "times-new-roman", sans-serif;
+  font-weight: 700;
+}
 
 /* 
 font-family: cormorant-garamond, serif; 
@@ -264,6 +277,25 @@ Dreamboat Bold
 font-family: "dreamboat", sans-serif;
 font-weight: 700;
 font-style: normal; */
+
+/* 
+Times New Roman Regular
+font-family: "times-new-roman", sans-serif;
+font-weight: 400;
+font-style: normal;
+Times New Roman Italic
+font-family: "times-new-roman", sans-serif;
+font-weight: 400;
+font-style: italic;
+Times New Roman Bold
+font-family: "times-new-roman", sans-serif;
+font-weight: 700;
+font-style: normal;
+Times New Roman Bold Italic
+font-family: "times-new-roman", sans-serif;
+font-weight: 700;
+font-style: italic;
+*/
 
 /* 
 Gotham Book

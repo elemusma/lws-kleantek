@@ -65,9 +65,6 @@ export default function Edit( { attributes, setAttributes } ) {
 		col_style,
 		col_class,
 		col_id,
-		columns_container_style,
-		columns_container_class,
-		columns_container_id,
 		columns_style,
 		columns_class,
 		columns_id,
@@ -123,14 +120,6 @@ export default function Edit( { attributes, setAttributes } ) {
 			}),
 		});
 	};
-
-// 	// In edit.js, update attributes with inner block count
-// const { innerBlocks } = useSelect((select) => ({
-//     innerBlocks: select('core/block-editor').getBlocksByClientId(clientId)[0]?.innerBlocks,
-// }));
-
-// // Then store it:
-// setAttributes({ hasInnerBlocks: innerBlocks?.length > 0 });
 
 	return (
 		<>
@@ -300,27 +289,6 @@ export default function Edit( { attributes, setAttributes } ) {
 					title={ __( 'Columns Settings' ) }
 					initialOpen={ false }
 				>
-					<InputControl
-						label="Column Container Style"
-						value={ columns_container_style }
-						onChange={ ( nextValue ) =>
-							setAttributes( { columns_container_style: nextValue } )
-						}
-					/>
-					<InputControl
-						label="Column Container Class"
-						value={ columns_container_class }
-						onChange={ ( nextValue ) =>
-							setAttributes( { columns_container_class: nextValue } )
-						}
-					/>
-					<InputControl
-						label="Column Container ID"
-						value={ columns_container_id }
-						onChange={ ( nextValue ) =>
-							setAttributes( { columns_container_id: nextValue } )
-						}
-					/>
 					<InputControl
 						label="Column Style"
 						value={ columns_style }

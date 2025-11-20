@@ -486,7 +486,7 @@ function save({
                         background: '#87b7bd'
                       }
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                      className: "position-relative handel",
+                      className: "position-relative proxima bold",
                       style: {
                         padding: '15px 0px'
                       },

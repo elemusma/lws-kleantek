@@ -106,19 +106,25 @@ return array(
 						'image' => '',
 						'imageUrl' => '',
 						'title' => 'Gallery Item 1',
-						'col_class' => 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h'
+						'col_class' => 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h',
+						'data_aos' => 'fade-up',
+						'data_aos_delay' => '100'
 					),
 					array(
 						'image' => '',
 						'imageUrl' => '',
 						'title' => 'Gallery Item 2',
-						'col_class' => 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h'
+						'col_class' => 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h',
+						'data_aos' => 'fade-up',
+						'data_aos_delay' => '100'
 					),
 					array(
 						'image' => '',
 						'imageUrl' => '',
 						'title' => 'Gallery Item 3',
-						'col_class' => 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h'
+						'col_class' => 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h',
+						'data_aos' => 'fade-up',
+						'data_aos_delay' => '100'
 					)
 				)
 			),
@@ -129,19 +135,25 @@ return array(
 						'image' => '',
 						'imageUrl' => '',
 						'title' => 'Gallery Item 1',
-						'col_class' => 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h'
+						'col_class' => 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h',
+						'data_aos' => 'fade-up',
+						'data_aos_delay' => '100'
 					),
 					array(
 						'image' => '',
 						'imageUrl' => '',
 						'title' => 'Gallery Item 2',
-						'col_class' => 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h'
+						'col_class' => 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h',
+						'data_aos' => 'fade-up',
+						'data_aos_delay' => '100'
 					),
 					array(
 						'image' => '',
 						'imageUrl' => '',
 						'title' => 'Gallery Item 3',
-						'col_class' => 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h'
+						'col_class' => 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h',
+						'data_aos' => 'fade-up',
+						'data_aos_delay' => '100'
 					)
 				)
 			),

@@ -38,7 +38,6 @@ export default function save( { attributes } ) {
 
 				<RawHTML>{ attributes.section_block }</RawHTML>
 
-				
 				<div
 					className={ attributes.container_class }
 					style={ attributes.container_style }
@@ -49,16 +48,13 @@ export default function save( { attributes } ) {
 						style={ attributes.row_style }
 						id={ attributes.row_id }
 					>
-  <div className={ attributes.col_class } style={ attributes.col_style } id={ attributes.col_id } > 
-    <InnerBlocks.Content /> 
-  </div>
-</div>
-</div>
-
-<div
-className={ attributes.columns_container_class }
-style={ attributes.columns_container_style }
-id={ attributes.columns_container_id }>
+						{/* <div
+						className={ attributes.col_class }
+						style={ attributes.col_style }
+						id={ attributes.col_id }
+					>
+						<InnerBlocks.Content />
+					</div> */}
 					<div
 						className={ attributes.columns_class }
 						style={ attributes.columns_style }
@@ -69,6 +65,7 @@ id={ attributes.columns_container_id }>
 								<div
 									className={ `${ column.col_class }` }
 									style={ column.col_style }
+									id={column.col_id}
 								>
 									<div
 										className={ `${ column.inner_col_class }` }
@@ -86,18 +83,21 @@ id={ attributes.columns_container_id }>
 										{ column.code_block && (
 											<RawHTML>{ column.code_block }</RawHTML>
 										)}
-										<div>
-								{column.title ? (
-									<h3 className="h6 bold" style={{ marginTop: '0px' }}>
-									<RichText.Content value={column.title} />
-									</h3>
-								) : column.content ? (
-									<p style={{ marginBottom: '0px' }}>
-									<RichText.Content value={column.content} />
-									</p>
-								) : null}
-								</div>
-
+										{column.title && column.content && (
+										<div className='' style={{}}>
+										
+										<h3 className={`h6 bold`} style={{marginTop:'0px'}}>
+											<RichText.Content
+												value={ column.title }
+											/>
+										</h3>
+										<p style={ { marginBottom: '0px' } }>
+											<RichText.Content
+												value={ column.content }
+											/>
+										</p>
+										</div>
+										)}
 									</div>
 								</div>
 							);
@@ -105,7 +105,7 @@ id={ attributes.columns_container_id }>
 </div> {/** end of columns */}
 
 					</div> {/** end of row */}
-				{/* </div> * end of container */}
+				</div>
 
 				
 			</section>

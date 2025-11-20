@@ -8,7 +8,7 @@
   \******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/content-honeycomb","version":"0.1.0","title":"Content Honeycomb","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":true},"attributes":{"classes":{"type":"string","default":""},"style":{"type":"string","default":"padding:50px 0;overflow:hidden;"},"id":{"type":"string","default":""},"section_image":{"type":"string","default":""},"section_image_alt":{"type":"string","default":null},"section_image_title":{"type":"string","default":null},"section_image_class":{"type":"string","default":"w-100 h-100 position-absolute bg-img"},"section_image_style":{"type":"string","default":"top:0;left:0;object-fit:cover;pointer-events:none;"},"section_block":{"type":"string","default":""},"top_image":{"type":"string","default":""},"top_image_alt":{"type":"string","default":""},"top_image_title":{"type":"string","default":""},"top_image_url":{"type":"string","default":""},"sidebar_titles_class":{"type":"string","default":"col-lg-3 order-md-2 order-2"},"sidebar_titles_style":{"type":"string","default":""},"gallery_content_titles_class":{"type":"string","default":"col-lg-9 order-md-2 order1"},"gallery_content_titles_style":{"type":"string","default":""},"sidebarTitles":{"type":"array","default":[{"title":"Title 1"},{"title":"Title 2"},{"title":"Title 3"}]},"topRowGallery":{"type":"array","default":[{"image":"","imageUrl":"","title":"Gallery Item 1","col_class":"col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"},{"image":"","imageUrl":"","title":"Gallery Item 2","col_class":"col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"},{"image":"","imageUrl":"","title":"Gallery Item 3","col_class":"col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h"}]},"bottomRowGallery":{"type":"array","default":[{"image":"","imageUrl":"","title":"Gallery Item 1","col_class":"col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"},{"image":"","imageUrl":"","title":"Gallery Item 2","col_class":"col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"},{"image":"","imageUrl":"","title":"Gallery Item 3","col_class":"col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h"}]},"bottom_image":{"type":"string","default":""},"bottom_image_alt":{"type":"string","default":""},"bottom_image_title":{"type":"string","default":""},"bottom_image_url":{"type":"string","default":""}},"textdomain":"content-honeycomb","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/content-honeycomb","version":"0.1.0","title":"Content Honeycomb","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":true},"attributes":{"classes":{"type":"string","default":""},"style":{"type":"string","default":"padding:50px 0;overflow:hidden;"},"id":{"type":"string","default":""},"section_image":{"type":"string","default":""},"section_image_alt":{"type":"string","default":null},"section_image_title":{"type":"string","default":null},"section_image_class":{"type":"string","default":"w-100 h-100 position-absolute bg-img"},"section_image_style":{"type":"string","default":"top:0;left:0;object-fit:cover;pointer-events:none;"},"section_block":{"type":"string","default":""},"top_image":{"type":"string","default":""},"top_image_alt":{"type":"string","default":""},"top_image_title":{"type":"string","default":""},"top_image_url":{"type":"string","default":""},"sidebar_titles_class":{"type":"string","default":"col-lg-3 order-md-2 order-2"},"sidebar_titles_style":{"type":"string","default":""},"gallery_content_titles_class":{"type":"string","default":"col-lg-9 order-md-2 order1"},"gallery_content_titles_style":{"type":"string","default":""},"sidebarTitles":{"type":"array","default":[{"title":"Title 1"},{"title":"Title 2"},{"title":"Title 3"}]},"topRowGallery":{"type":"array","default":[{"image":"","imageUrl":"","title":"Gallery Item 1","col_class":"col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h","data_aos":"fade-up","data_aos_delay":"100"},{"image":"","imageUrl":"","title":"Gallery Item 2","col_class":"col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h","data_aos":"fade-up","data_aos_delay":"100"},{"image":"","imageUrl":"","title":"Gallery Item 3","col_class":"col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h","data_aos":"fade-up","data_aos_delay":"100"}]},"bottomRowGallery":{"type":"array","default":[{"image":"","imageUrl":"","title":"Gallery Item 1","col_class":"col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h","data_aos":"fade-up","data_aos_delay":"100"},{"image":"","imageUrl":"","title":"Gallery Item 2","col_class":"col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h","data_aos":"fade-up","data_aos_delay":"100"},{"image":"","imageUrl":"","title":"Gallery Item 3","col_class":"col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h","data_aos":"fade-up","data_aos_delay":"100"}]},"bottom_image":{"type":"string","default":""},"bottom_image_alt":{"type":"string","default":""},"bottom_image_title":{"type":"string","default":""},"bottom_image_url":{"type":"string","default":""}},"textdomain":"content-honeycomb","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -147,7 +147,9 @@ function Edit({
         imageAlt: '',
         imageTitle: '',
         title: 'New Item',
-        col_class: 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h'
+        col_class: 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h',
+        data_aos: 'fade-up',
+        data_aos_delay: '100'
       }]
     });
   };
@@ -187,7 +189,9 @@ function Edit({
         imageAlt: '',
         imageTitle: '',
         title: 'New Item',
-        col_class: 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h'
+        col_class: 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h',
+        data_aos: 'fade-up',
+        data_aos_delay: '100'
       }]
     });
   };
@@ -458,6 +462,14 @@ function Edit({
             value: item.col_class,
             onChange: value => updateTopRowGallery(index, 'col_class', value)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Data AOS'),
+            value: item.data_aos,
+            onChange: value => updateTopRowGallery(index, 'data_aos', value)
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Data AOS Delay'),
+            value: item.data_aos_delay,
+            onChange: value => updateTopRowGallery(index, 'data_aos_delay', value)
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title'),
             value: item.title,
             onChange: value => updateTopRowGallery(index, 'title', value)
@@ -533,6 +545,14 @@ function Edit({
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Col Class Name'),
             value: item.col_class,
             onChange: value => updateBottomRowGallery(index, 'col_class', value)
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Data AOS'),
+            value: item.data_aos,
+            onChange: value => updateBottomRowGallery(index, 'data_aos', value)
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Data AOS Delay'),
+            value: item.data_aos_delay,
+            onChange: value => updateBottomRowGallery(index, 'data_aos_delay', value)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title'),
             value: item.title,
@@ -866,6 +886,8 @@ function save({
                   className: "row position-relative justify-content-end",
                   children: topRowGallery.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                     className: item.col_class,
+                    "data-aos": item.data_aos,
+                    "data-aos-delay": item.data_aos_delay,
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                       className: "overlay-custom position-absolute w-100 h-100 z-1",
                       style: {
@@ -878,7 +900,7 @@ function save({
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                       className: "position-relative z-1 w-100",
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-                        className: "mb-0 heading text-uppercase h5 handel",
+                        className: "mb-0 heading text-uppercase h5 gotham",
                         children: item.title
                       })
                     })]
@@ -901,6 +923,8 @@ function save({
                   className: "row position-relative justify-content-start",
                   children: bottomRowGallery.map((item, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
                     className: item.col_class,
+                    "data-aos": item.data_aos,
+                    "data-aos-delay": item.data_aos_delay,
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                       className: "overlay-custom position-absolute w-100 h-100 z-1",
                       style: {
@@ -913,7 +937,7 @@ function save({
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                       className: "position-relative z-1 w-100",
                       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
-                        className: "mb-0 heading text-uppercase h5 handel",
+                        className: "mb-0 heading text-uppercase h5 gotham",
                         children: item.title
                       })
                     })]

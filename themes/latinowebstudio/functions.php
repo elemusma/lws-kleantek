@@ -37,6 +37,7 @@ wp_enqueue_style('font-poppins', get_theme_file_uri('/font-poppins/font-poppins.
 wp_enqueue_style('handel-chennai', '//use.typekit.net/lcf3uey.css');
 wp_enqueue_style('gotham', '//use.typekit.net/met6pwh.css');
 wp_enqueue_style('dreamboat', '//use.typekit.net/mvs2gam.css');
+wp_enqueue_style('times-new-roman', '//use.typekit.net/met6pwh.css');
 
 if(is_front_page()){
 wp_enqueue_style('home', get_theme_file_uri('/css/sections/home.css'));

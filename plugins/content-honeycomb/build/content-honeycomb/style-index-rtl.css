@@ -41,6 +41,18 @@
   background: rgb(255, 255, 255);
   background: linear-gradient(0deg, rgba(255, 255, 255, 0) 50%, rgb(135, 183, 189) 100%);
 }
+.col-top-row-links:first-child .heading,
+.col-top-row-links:nth-child(2) .heading {
+  background: var(--accent-quinary);
+  transform: translate(20px, 0px);
+}
+.col-top-row-links:first-child .heading,
+.col-top-row-links:nth-child(2) .heading,
+.col-bottom-row-links:nth-child(2) .heading,
+.col-bottom-row-links:first-child .heading {
+  font-size: 1.5rem;
+  padding: 10px;
+}
 .col-top-row-links:nth-child(2) {
   height: 280px;
   clip-path: polygon(25% 15%, 30% 0, 75% 0, 100% 100%, 10% 100%, 0 71%, 9% 15%);
@@ -54,7 +66,7 @@
   background: rgba(0, 0, 0, 0.25);
 }
 .col-top-row-links:nth-child(2) .heading {
-  transform: translate(-20px, 90px);
+  transform: translate(0px, 90px);
 }
 .col-top-row-links:nth-child(3) {
   height: 255px;
@@ -123,8 +135,11 @@
   height: 360px;
 }
 .col-bottom-row-links:first-child .heading {
-  background: #86c1a9;
-  transform: translate(-15px, 0);
+  background: var(--accent-quinary);
+  transform: translate(-155px, 0);
+  display: inline-block;
+  padding: 10px 65px 10px 235px;
+  clip-path: polygon(5% 0%, 100% 0, 100% 100%, 0% 100%);
 }
 .col-bottom-row-links:nth-child(2) {
   clip-path: polygon(100% 0, 70% 100%, 40% 50%, 10% 50%, 0 25%, 10% 0);
@@ -138,9 +153,9 @@
   background: rgba(0, 0, 0, 0.25);
 }
 .col-bottom-row-links:nth-child(2) .heading {
-  background: #87b7bd;
-  transform: translate(20px, 0);
-  padding: 10px;
+  background: var(--accent-quinary);
+  transform: translate(50px, 0);
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
 }
 .col-bottom-row-links:nth-child(3) {
   clip-path: polygon(15% 0, 100% 0, 65% 100%, 30% 55%, 5% 50%, 0 20%);

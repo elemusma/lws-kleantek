@@ -105,7 +105,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	// Add top row gallery item
 	const addTopRowGallery = () => {
 		setAttributes( {
-			topRowGallery: [ ...topRowGallery, { imageUrl: '', imageAlt: '', imageTitle: '', title: 'New Item', col_class: 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h' } ],
+			topRowGallery: [ ...topRowGallery, { imageUrl: '', imageAlt: '', imageTitle: '', title: 'New Item', col_class: 'col-lg-4 col-md-6 col-top-row-links text-white text-center d-flex justify-content-center overflow-h', data_aos: 'fade-up', data_aos_delay: '100' } ],
 		} );
 	};
 
@@ -129,7 +129,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	// Add bottom row gallery item
 	const addBottomRowGallery = () => {
 		setAttributes( {
-			bottomRowGallery: [ ...bottomRowGallery, { imageUrl: '', imageAlt: '', imageTitle: '', title: 'New Item', col_class: 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h' } ],
+			bottomRowGallery: [ ...bottomRowGallery, { imageUrl: '', imageAlt: '', imageTitle: '', title: 'New Item', col_class: 'col-md-6 col-bottom-row-links text-white text-center d-flex justify-content-center overflow-h', data_aos: 'fade-up', data_aos_delay: '100' } ],
 		} );
 	};
 
@@ -457,6 +457,28 @@ export default function Edit( { attributes, setAttributes } ) {
 								}
 							/>
 							<TextControl
+								label={ __( 'Data AOS' ) }
+								value={ item.data_aos }
+								onChange={ ( value ) =>
+									updateTopRowGallery(
+										index,
+										'data_aos',
+										value
+									)
+								}
+							/>
+							<TextControl
+								label={ __( 'Data AOS Delay' ) }
+								value={ item.data_aos_delay }
+								onChange={ ( value ) =>
+									updateTopRowGallery(
+										index,
+										'data_aos_delay',
+										value
+									)
+								}
+							/>
+							<TextControl
 								label={ __( 'Title' ) }
 								value={ item.title }
 								onChange={ ( value ) =>
@@ -569,6 +591,28 @@ export default function Edit( { attributes, setAttributes } ) {
 									updateBottomRowGallery(
 										index,
 										'col_class',
+										value
+									)
+								}
+							/>
+							<TextControl
+								label={ __( 'Data AOS' ) }
+								value={ item.data_aos }
+								onChange={ ( value ) =>
+									updateBottomRowGallery(
+										index,
+										'data_aos',
+										value
+									)
+								}
+							/>
+							<TextControl
+								label={ __( 'Data AOS Delay' ) }
+								value={ item.data_aos_delay }
+								onChange={ ( value ) =>
+									updateBottomRowGallery(
+										index,
+										'data_aos_delay',
 										value
 									)
 								}

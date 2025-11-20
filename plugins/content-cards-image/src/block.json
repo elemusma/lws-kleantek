@@ -84,18 +84,6 @@
 			"type": "string",
 			"default": ""
 		},
-		"columns_container_style": {
-			"type": "string",
-			"default": ""
-		},
-		"columns_container_class": {
-			"type": "string",
-			"default": "row"
-		},
-		"columns_container_id": {
-			"type": "string",
-			"default": ""
-		},
 		"columns_style": {
 			"type": "string",
 			"default": ""

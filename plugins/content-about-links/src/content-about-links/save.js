@@ -84,7 +84,7 @@ export default function save( { attributes } ) {
 															} }
 														></div>
 														<div
-															className="position-relative handel"
+															className="position-relative proxima bold"
 															style={ {
 																padding: '15px 0px',
 															} }
