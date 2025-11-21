@@ -236,6 +236,38 @@ if (strpos($id, 'modal') !== false) {
 
 add_shortcode( 'button', 'btn_shortcode' );
 
+function book_online_button_shortcode() {
+    return '<a class="small btn-pulse" style="margin:0;" href="/book-online"><span class="btn-main">Book Online</span></a>';
+}
+add_shortcode('book_online_button', 'book_online_button_shortcode');
+
+function global_phone_shortcode() {
+  return '<a class="phone" href="tel:+1' . globalPhone() . '" style="" target="" id="">' . globalPhone() . '</a>';
+}
+
+add_shortcode('global_phone', 'global_phone_shortcode');
+
+function global_email_shortcode() {
+  return '<a class="email" href="mailto:' . emailAddress() . '" style="" target="" id="">' . emailAddress() . '</a>';
+}
+
+add_shortcode('global_email', 'global_email_shortcode');
+
+function global_cta_shortcode() {
+    $output = '<div>' . do_shortcode('[book_online_button]') . '</div>';
+    $output .= '<div style="padding-top:25px;">' . do_shortcode('[global_phone]') . '</div>';
+    return $output;
+}
+
+add_shortcode('global_cta', 'global_cta_shortcode');
+
+function global_phone_text_shortcode() {
+    return globalPhone();
+}
+add_shortcode('global_phone_text', 'global_phone_text_shortcode');
+
+
+
 function spacer_shortcode( $atts, $content = null ) {
 
 $a = shortcode_atts( array(

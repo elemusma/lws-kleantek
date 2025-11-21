@@ -49,7 +49,9 @@
                 'menu_class' => 'menu list-unstyled mb-0 d-flex'
               ));
             ?>
-		
+            <div style="padding:0 9px;" class="text-white">
+              <?php echo do_shortcode('[global_phone]'); ?>
+            </div>
 			  </div>
           </div>
           
@@ -67,7 +69,7 @@
             </div>
 			</div>
       <div class="col-lg-2 col-5" style="padding-left:0px;">
-            <?php echo do_shortcode('[button class="small btn-pulse" style="margin:0;" href="/book-online"]Book Online[/button]') ?>
+            <?php echo do_shortcode('[book_online_button]'); ?>
             <div style="margin-left:15px;">
       
 		<!-- <a class="d-flex align-items-center phone small" role="button" href="tel:+1<?php echo globalPhone(); ?>" style="" target="" id="">

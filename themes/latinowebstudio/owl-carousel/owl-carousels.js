@@ -63,6 +63,40 @@ $('.carousel-work').owlCarousel({
     //     }
     // }
 });
+
+$('.carousel-testimonial').owlCarousel({
+    // center: true,
+    loop: false,
+    margin: 40,
+    nav: true,
+    dots: false,
+    autoHeight: false,
+    // autoHeightClass: 'owl-height',
+    // stagePadding:170,
+    autoplay: false,
+    autoplayTimeout: 3500,
+    autoplaySpeed: 2000, // this seems to make it autoscroll
+    autoplayHoverPause: false,
+    animateIn: 'fadeIn',
+    animateOut: 'fadeOut',
+    navText : ["<img src='/wp-content/uploads/2025/11/Arrow-White-Left.png' alt='arrow previous' />","<img src='/wp-content/uploads/2025/11/Arrow-White-Right.png' alt='arrow next' />"],
+    responsive: {
+        0: {
+            items: 1,
+            // slideBy: 2
+        },
+        600: {
+            items: 2,
+            // slideBy: 3
+        },
+        1000: {
+            items: 3,
+            slideBy: 1
+        }
+    }
+});
+
+
  // Initialize carousel-cars
   var $carouselCars = $('.carousel-cars');
 

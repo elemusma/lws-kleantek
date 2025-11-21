@@ -43,7 +43,6 @@ web.config
 *.log
 
 # Backup files
-*.sql
 *.zip
 *.tar.gz
 *.bak

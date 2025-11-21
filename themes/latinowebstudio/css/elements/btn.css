@@ -2,7 +2,7 @@
 .btn-main a,
 .wp-block-file__button {
     background: var(--accent-secondary);
-    padding: 10px 15px !important;
+    padding: 10px 10px !important;
     font-size: 14px;
     transition: all .25s ease-in-out !important;
 	box-shadow:none !important;
@@ -10,7 +10,7 @@
     text-decoration: none;
     color: white!important;
     text-shadow:none;
-    border-radius: 45px;
+    border-radius: 8px;
     text-transform: uppercase;
     border:1px solid var(--accent-secondary);
     font-family: 'poppinssemibold';
@@ -89,9 +89,13 @@
     color:black;
 }
 
+
+
+
 .btn-pulse {
     position: relative;
-    z-index: 1;
+    z-index: 0; /* Lower than the default content */
+    overflow: visible; /* Allows the pulse to expand outside */
 }
 
 .btn-pulse::before,
@@ -100,12 +104,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: inherit;
+    width: 90%;
+    height: 265%;
+    background: rgba(var(--accent-secondary-rgb), 0.5);
+    /* background: white; */
+    /* border: 2px solid rgba(255, 255, 255, 0.5); */
+    border-radius: 8px;
     transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
     opacity: 1;
     z-index: -1;
 }
@@ -120,26 +126,26 @@
 
 @keyframes pulse1 {
     0% {
-        width: 100%;
-        height: 100%;
+        width: 90%;
+        height: 265%;
         opacity: 1;
     }
     100% {
-        width: 125%;
-        height: 125%;
+        width: 95%;
+        height: 295%;
         opacity: 0;
     }
 }
 
 @keyframes pulse2 {
     0% {
-        width: 100%;
-        height: 100%;
+        width: 90%;
+        height: 265%;
         opacity: 1;
     }
     100% {
-        width: 125%;
-        height: 125%;
+        width: 95%;
+        height: 295%;
         opacity: 0;
     }
 }

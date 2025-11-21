@@ -5,6 +5,7 @@
   --accent-primary-darker: #61A0A8;
   --accent-primary-hover: #508991;
   --accent-secondary: #ffa900;
+  --accent-secondary-rgb: 255,169,0;
   --accent-secondary-hover: #E09600;
   --accent-tertiary: #58bee4;
   --accent-quaternary: #86c1a9;
@@ -15,6 +16,8 @@
   --light: gainsboro;
   --light-secondary: #e8edec;
   --text-shadow: 1px 1px 3px black;
+  --proxima-font: 'proxima_novaregular';
+  --proxima-bold-font: 'proxima_novabold';
 }
 
 html {

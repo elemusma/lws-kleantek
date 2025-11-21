@@ -63,10 +63,14 @@ header.position-fixed.scroll{
     pointer-events: none;
 }
 
-div#logoMain * svg path {
+div#logoMain * svg path,
+div#logoMain * svg rect,
+div#logoMain * svg polygon {
     transition:all .25s ease-in-out;
 }
-div#logoMain:hover svg path {
+div#logoMain:hover svg path,
+div#logoMain:hover svg rect,
+div#logoMain:hover svg polygon {
     fill: var(--accent-primary);
 }
 
@@ -149,10 +153,9 @@ ul.menu>li>a {
         height: 80%;
         width: 2px;
     }
-    ul.menu>li:last-child:after {
-        /* padding:25px 9px; */
+    /* ul.menu>li:last-child:after {
         content:none;
-    }
+    } */
 }
 
 ul#menu-primary {

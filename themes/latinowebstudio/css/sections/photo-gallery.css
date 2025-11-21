@@ -2,12 +2,12 @@ button.owl-prev,
 button.owl-next {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: -40px;
 }
 
 button.owl-next {
     left: unset;
-    right: 10px;
+    right: -40px;
 }
 
 button.owl-next img,

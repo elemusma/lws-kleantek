@@ -34,3 +34,13 @@ document.addEventListener('keydown', function (e) {
     });
   }
 });
+
+// Close #mobileMenu when clicking any link inside it
+document.querySelectorAll('#mobileMenu a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function () {
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu) {
+      mobileMenu.classList.remove('active');
+    }
+  });
+});
